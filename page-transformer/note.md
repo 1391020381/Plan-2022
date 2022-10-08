@@ -9,3 +9,7 @@
 * 当需要将应用部署到生产环境时，只需运行 vite build 命令。默认情况下，它使用 <root>/index.html 作为其构建入口点，并生成能够静态部署的应用程序包。请查阅 部署静态站点 获取常见服务的部署指引。
 # 服务端渲染
 * [服务端渲染](https://cn.vitejs.dev/guide/ssr.html)
+
+* createSSRApp()
+* [createSSRApp](https://cn.vuejs.org/api/application.html#create-ssr-app)
+* 以SSR激活模式创建一个应用实例。用法与 createApp() 完全相同。
