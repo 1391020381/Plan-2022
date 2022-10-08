@@ -1,95 +1,96 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import { fileURLToPath } from 'url'
-import express from 'express'
-
-const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "url";
+import express from "express";
+// eslint-disable-next-line
+const isTest = process.env.NODE_ENV === "test" || !!process.env.VITE_TEST_BUILD;
 
 export async function createServer(
+  // eslint-disable-next-line
   root = process.cwd(),
-  isProd = process.env.NODE_ENV === 'production',
+  // eslint-disable-next-line
+  isProd = process.env.NODE_ENV === "production",
   hmrPort
 ) {
-  const __dirname = path.dirname(fileURLToPath(import.meta.url))
-  const resolve = (p) => path.resolve(__dirname, p)
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const resolve = (p) => path.resolve(__dirname, p);
 
   const indexProd = isProd
-    ? fs.readFileSync(resolve('dist/index.html'), 'utf-8')
-    : ''
+    ? fs.readFileSync(resolve("dist/index.html"), "utf-8")
+    : "";
 
-  const app = express()
+  const app = express();
 
   /**
    * @type {import('vite').ViteDevServer}
    */
-  let vite
+  let vite;
   if (!isProd) {
     vite = await (
-      await import('vite')
+      await import("vite")
     ).createServer({
-      base: '/test/',
+      base: "/test/",
       root,
-      logLevel: isTest ? 'error' : 'info',
+      logLevel: isTest ? "error" : "info",
       server: {
         middlewareMode: true,
         watch: {
           // During tests we edit the files too fast and sometimes chokidar
           // misses change events, so enforce polling for consistency
           usePolling: true,
-          interval: 100
+          interval: 100,
         },
         hmr: {
-          port: hmrPort
-        }
+          port: hmrPort,
+        },
       },
-      appType: 'custom'
-    })
+      appType: "custom",
+    });
     // use vite's connect instance as middleware
-    app.use(vite.middlewares)
+    app.use(vite.middlewares);
   } else {
     app.use(
-      (await import('serve-static')).default(resolve('dist'), {
-        index: false
+      (await import("serve-static")).default(resolve("dist"), {
+        index: false,
       })
-    )
+    );
   }
 
-  app.use('*', async (req, res) => {
+  app.use("*", async (req, res) => {
     try {
-      const url = req.originalUrl.replace('/test/', '/')
+      const url = req.originalUrl.replace("/test/", "/");
 
-      let template, render
+      let template, render;
       if (!isProd) {
         // always read fresh template in dev
-        template = fs.readFileSync(resolve('index.html'), 'utf-8')
-        template = await vite.transformIndexHtml(url, template)
-        render = (await vite.ssrLoadModule('/src/entry-server.js')).render
+        template = fs.readFileSync(resolve("index.html"), "utf-8");
+        template = await vite.transformIndexHtml(url, template);
+        render = (await vite.ssrLoadModule("/src/entry-server.js")).render;
       } else {
-        template = indexProd
+        template = indexProd;
         // @ts-ignore
-        render = (await import('./dist/server/entry-server.js')).render
+        render = (await import("./dist/server/entry-server.js")).render;
       }
 
-      const [appHtml] = await render(url)
+      const [appHtml] = await render(url);
 
-      const html = template
-        .replace(`<!--app-html-->`, appHtml)
+      const html = template.replace(`<!--app-html-->`, appHtml);
 
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
+      res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
-      vite && vite.ssrFixStacktrace(e)
-      console.log(e.stack)
-      res.status(500).end(e.stack)
+      vite && vite.ssrFixStacktrace(e);
+      console.log(e.stack);
+      res.status(500).end(e.stack);
     }
-  })
+  });
 
-  return { app, vite }
+  return { app, vite };
 }
 
 if (!isTest) {
   createServer().then(({ app }) =>
     app.listen(6173, () => {
-      console.log('http://localhost:6173')
+      console.log("http://localhost:6173");
     })
-  )
+  );
 }
