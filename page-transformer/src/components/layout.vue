@@ -1,18 +1,18 @@
 <script setup>
-    import Header from './header.vue'
-    import Footer from './footer.vue'
+import Header from "./header.vue";
+import Footer from "./footer.vue";
 </script>
 
 <template>
-    <header>
-        <Header></Header>
-    </header>
-    <main>
-        <slot></slot>
-    </main>
-    <footer>
-        <Footer></Footer>
-    </footer>
+  <header>
+    <Header></Header>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <Footer></Footer>
+  </footer>
 </template>
 
 <style>
@@ -52,7 +52,7 @@ button,
 input,
 select,
 textarea {
-  font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+  font: 12px/1.5 tahoma, arial, "Hiragino Sans GB", "\5b8b\4f53", sans-serif;
 }
 h1,
 h2,

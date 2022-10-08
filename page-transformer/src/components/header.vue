@@ -1,162 +1,333 @@
 <script setup>
-    import { onMounted } from 'vue'
-    // 一般情况下 header 和 footer 都不会用框架去写，因为可能用在其他很多中场景
-    function init() {
-        const nav = document.getElementById('J_SiteNavBd')
-        const multimenus = nav.querySelectorAll('.J_MultiMenu')
-        for (let i = 0, l = multimenus.length; i < l; i++) {
-            const menu = multimenus[i]
-            menu.addEventListener('mouseover', () => {
-                menu.querySelector('.site-nav-menu-list').style = 'display: block'
-            }, false)
-            menu.addEventListener('mouseout', () => {
-                menu.querySelector('.site-nav-menu-list').style = ''
-            })
-        }
-    }
+import { onMounted } from "vue";
+// 一般情况下 header 和 footer 都不会用框架去写，因为可能用在其他很多中场景
+function init() {
+  const nav = document.getElementById("J_SiteNavBd");
+  const multimenus = nav.querySelectorAll(".J_MultiMenu");
+  for (let i = 0, l = multimenus.length; i < l; i++) {
+    const menu = multimenus[i];
+    menu.addEventListener(
+      "mouseover",
+      () => {
+        menu.querySelector(".site-nav-menu-list").style = "display: block";
+      },
+      false
+    );
+    menu.addEventListener("mouseout", () => {
+      menu.querySelector(".site-nav-menu-list").style = "";
+    });
+  }
+}
 
-    onMounted(() => {
-        init()
-    })
+onMounted(() => {
+  init();
+});
 </script>
 
 <template>
-    <div class="site-nav site-nav-status-logout">
-        <div class="site-nav-bd" id="J_SiteNavBd">
-            <ul class="site-nav-bd-l" id="J_SiteNavBdL">
-                <li class="site-nav-menu site-nav-switch site-nav-multi-menu J_MultiMenu " data-name="region">
-                    <div class="site-nav-menu-hd"><span class="site-nav-region">中国大陆</span><span
-                            class="site-nav-arrow"><span class="site-nav-icon"></span></span></div>
-                    <div class="site-nav-menu-bd site-nav-menu-list">
-                        <ul id="J_SiteNavRegionList" class="site-nav-region-list site-nav-menu-bd-panel menu-bd-panel"
-                            role="listbox" aria-expanded="true">
-                            <li class="site-nav-region-item J_RegionItem" role="option">全球</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">中国大陆</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">中国香港</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">中国台湾</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">中国澳门</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">韩国</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">马来西亚</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">澳大利亚</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">新加坡</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">新西兰</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">加拿大</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">日本</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">越南</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">泰国</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">菲律宾</li>
-                            <li class="site-nav-region-item J_RegionItem" role="option">柬埔寨</li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="site-nav-menu site-nav-login " id="J_SiteNavLogin" data-name="login" data-spm="754894437">
-                    <div class="site-nav-menu-hd">
-                        <div class="site-nav-sign"><a
-                                href="//login.taobao.com/member/login.jhtml?f=top&amp;redirectURL=https%3A%2F%2Fwww.taobao.com%2F"
-                                target="_top" class="h">亲，请登录</a><a
-                                href="//reg.taobao.com/member/new_register.jhtml?from=tbtop&amp;ex_info=&amp;ex_sign="
-                                target="_top">免费注册</a></div>
-                        <div class="site-nav-user"></div>
-                    </div>
-                    <div class="site-nav-menu-bd" id="J_SiteNavLoginPanel"></div>
-                </li>
-                <li class="site-nav-menu site-nav-mobile" id="J_SiteNavMobile" data-name="mobile">
-                    <div class="site-nav-menu-hd"><a
-                            href="https://market.m.taobao.com/app/fdilab/download-page/main/index.html"
-                            target="_top"><span>手机逛淘宝</span></a></div>
-                </li>
-                <li class="site-nav-menu site-nav-mobile" id="J_SiteNavMobile">
-                    <div class="site-nav-menu-hd"><a href="javascript:void(0)" id="cniil_wza"
-                            target="_self"><span>网页无障碍</span></a></div>
-                </li>
+  <div class="site-nav site-nav-status-logout">
+    <div class="site-nav-bd" id="J_SiteNavBd">
+      <ul class="site-nav-bd-l" id="J_SiteNavBdL">
+        <li
+          class="site-nav-menu site-nav-switch site-nav-multi-menu J_MultiMenu"
+          data-name="region"
+        >
+          <div class="site-nav-menu-hd">
+            <span class="site-nav-region">中国大陆</span
+            ><span class="site-nav-arrow"
+              ><span class="site-nav-icon"></span></span
+            >
+          </div>
+          <div class="site-nav-menu-bd site-nav-menu-list">
+            <ul
+              id="J_SiteNavRegionList"
+              class="site-nav-region-list site-nav-menu-bd-panel menu-bd-panel"
+              role="listbox"
+              aria-expanded="true"
+            >
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                全球
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                中国大陆
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                中国香港
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                中国台湾
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                中国澳门
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                韩国
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                马来西亚
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                澳大利亚
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                新加坡
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                新西兰
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                加拿大
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                日本
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                越南
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                泰国
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                菲律宾
+              </li>
+              <li class="site-nav-region-item J_RegionItem" role="option">
+                柬埔寨
+              </li>
             </ul>
-            <ul class="site-nav-bd-r" id="J_SiteNavBdR">
-                <li class="site-nav-menu site-nav-home" id="J_SiteNavHome" data-name="home">
-                    <div class="site-nav-menu-hd"><a href="//www.taobao.com/" target="_top"><span>淘宝网首页</span></a></div>
-                </li>
-                <li class="site-nav-menu site-nav-mytaobao site-nav-multi-menu J_MultiMenu " id="J_SiteNavMytaobao"
-                    data-name="mytaobao">
-                    <div class="site-nav-menu-hd"><a href="//i.taobao.com/my_taobao.htm"
-                            target="_top"><span>我的淘宝</span></a><span class="site-nav-arrow"><span
-                                class="site-nav-icon"></span></span></div>
-                    <div class="site-nav-menu-bd site-nav-menu-list">
-                        <div class="site-nav-menu-bd-panel menu-bd-panel"><a
-                                href="//trade.taobao.com/trade/itemlist/list_bought_items.htm" target="_top">已买到的宝贝</a><a
-                                href="//www.taobao.com/markets/footmark/tbfoot" target="_top">我的足迹</a></div>
-                    </div>
-                </li>
-                <li class="site-nav-menu site-nav-cart site-nav-menu-empty site-nav-multi-menu J_MultiMenu " id="J_MiniCart"
-                    data-name="cart" data-spm="1997525049">
-                    <div class="site-nav-menu-hd"><a
-                            href="//cart.taobao.com/cart.htm?from=mini&amp;ad_id=&amp;am_id=&amp;cm_id=&amp;pm_id=1501036000a02c5c3739"
-                            target="_top"><span
-                                class="site-nav-icon site-nav-icon-highlight"></span><span>购物车</span><strong class="h"
-                                id="J_MiniCartNum"></strong></a></div>
-                    <div class="site-nav-menu-bd">
-                        <div class="site-nav-menu-bd-panel menu-bd-panel"></div>
-                    </div>
-                </li>
-                <li class="site-nav-menu site-nav-favor site-nav-multi-menu J_MultiMenu " id="J_SiteNavFavor"
-                    data-name="favor" data-spm="1997525053">
-                    <div class="site-nav-menu-hd"><a href="//shoucang.taobao.com/item_collect.htm" target="_top"><span
-                                class="site-nav-icon"></span><span>收藏夹</span></a><span class="site-nav-arrow"><span
-                                class="site-nav-icon"></span></span></div>
-                    <div class="site-nav-menu-bd site-nav-menu-list">
-                        <div class="site-nav-menu-bd-panel menu-bd-panel"><a href="//shoucang.taobao.com/item_collect.htm"
-                                target="_top">收藏的宝贝</a><a href="//shoucang.taobao.com/shop_collect_list.htm"
-                                target="_top">收藏的店铺</a></div>
-                    </div>
-                </li>
-                <li class="site-nav-menu site-nav-catalog" id="J_SiteNavCatalog" data-name="catalog" data-spm="1997563209">
-                    <div class="site-nav-menu-hd"><a href="//www.taobao.com/tbhome/page/market-list"
-                            target="_top"><span>商品分类</span></a><a
-                            href="//ishop.taobao.com/openshop/tb_open_shop_landing.htm" target="_top"><span>免费开店</span></a>
-                    </div>
-                </li>
-                <li class="site-nav-pipe">|</li>
-                <li class="site-nav-menu site-nav-seller site-nav-multi-menu J_MultiMenu " id="J_SiteNavSeller"
-                    data-name="seller">
-                    <div class="site-nav-menu-hd"><a href="//myseller.taobao.com/home.htm/QnworkbenchHome/"
-                            target="_top"><span>千牛卖家中心</span></a><span class="site-nav-arrow"><span
-                                class="site-nav-icon"></span></span></div>
-                    <div class="site-nav-menu-bd site-nav-menu-list">
-                        <div class="site-nav-menu-bd-panel menu-bd-panel"><a
-                                href="//myseller.taobao.com/home.htm/QnworkbenchHome/" target="_top">开店入驻</a><a
-                                href="//trade.taobao.com/trade/itemlist/list_sold_items.htm?toNew=true"
-                                target="_top">已卖出的宝贝</a><a href="//sell.taobao.com/auction/goods/goods_on_sale.htm"
-                                target="_top">出售中的宝贝</a><a href="//fuwu.taobao.com/?tracelog=tbdd"
-                                target="_top">卖家服务市场</a><a href="//daxue.taobao.com/" target="_top">卖家培训中心</a><a
-                                href="//healthcenter.taobao.com/home/health_home.htm" target="_top">体检中心</a><a
-                                href="//qn.taobao.com/headline/news" target="_top">电商学习中心</a></div>
-                    </div>
-                </li>
-                <li class="site-nav-menu site-nav-service site-nav-multi-menu J_MultiMenu " id="J_SiteNavService"
-                    data-name="service">
-                    <div class="site-nav-menu-hd"><a href="https://consumerservice.taobao.com"
-                            target="_top"><span>联系客服</span></a><span class="site-nav-arrow"><span
-                                class="site-nav-icon"></span></span></div>
-                    <div class="site-nav-menu-bd site-nav-menu-list">
-                        <div class="site-nav-menu-bd-panel menu-bd-panel"><a
-                                href="https://consumerservice.taobao.com/online-help" target="_top">消费者客服</a><a
-                                href="//helpcenter.taobao.com/index?from=high" target="_top">卖家客服</a><a
-                                href="https://market.m.taobao.com/app/tbhome/feedback/index.html?from=https%3A%2F%2Fwww.taobao.com%2F"
-                                target="_top">意见反馈</a><a href="https://market.m.taobao.com/app/im/chat/index.html"
-                                target="_top">网页版旺旺</a></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+          </div>
+        </li>
+        <li
+          class="site-nav-menu site-nav-login"
+          id="J_SiteNavLogin"
+          data-name="login"
+          data-spm="754894437"
+        >
+          <div class="site-nav-menu-hd">
+            <div class="site-nav-sign">
+              <a
+                href="//login.taobao.com/member/login.jhtml?f=top&amp;redirectURL=https%3A%2F%2Fwww.taobao.com%2F"
+                target="_top"
+                class="h"
+                >亲，请登录</a
+              ><a
+                href="//reg.taobao.com/member/new_register.jhtml?from=tbtop&amp;ex_info=&amp;ex_sign="
+                target="_top"
+                >免费注册</a
+              >
+            </div>
+            <div class="site-nav-user"></div>
+          </div>
+          <div class="site-nav-menu-bd" id="J_SiteNavLoginPanel"></div>
+        </li>
+        <li
+          class="site-nav-menu site-nav-mobile"
+          id="J_SiteNavMobile"
+          data-name="mobile"
+        >
+          <div class="site-nav-menu-hd">
+            <a
+              href="https://market.m.taobao.com/app/fdilab/download-page/main/index.html"
+              target="_top"
+              ><span>手机逛淘宝</span></a
+            >
+          </div>
+        </li>
+        <li class="site-nav-menu site-nav-mobile" id="J_SiteNavMobile">
+          <div class="site-nav-menu-hd">
+            <a href="javascript:void(0)" id="cniil_wza" target="_self"
+              ><span>网页无障碍</span></a
+            >
+          </div>
+        </li>
+      </ul>
+      <ul class="site-nav-bd-r" id="J_SiteNavBdR">
+        <li
+          class="site-nav-menu site-nav-home"
+          id="J_SiteNavHome"
+          data-name="home"
+        >
+          <div class="site-nav-menu-hd">
+            <a href="//www.taobao.com/" target="_top"
+              ><span>淘宝网首页</span></a
+            >
+          </div>
+        </li>
+        <li
+          class="site-nav-menu site-nav-mytaobao site-nav-multi-menu J_MultiMenu"
+          id="J_SiteNavMytaobao"
+          data-name="mytaobao"
+        >
+          <div class="site-nav-menu-hd">
+            <a href="//i.taobao.com/my_taobao.htm" target="_top"
+              ><span>我的淘宝</span></a
+            ><span class="site-nav-arrow"
+              ><span class="site-nav-icon"></span></span
+            >
+          </div>
+          <div class="site-nav-menu-bd site-nav-menu-list">
+            <div class="site-nav-menu-bd-panel menu-bd-panel">
+              <a
+                href="//trade.taobao.com/trade/itemlist/list_bought_items.htm"
+                target="_top"
+                >已买到的宝贝</a
+              ><a href="//www.taobao.com/markets/footmark/tbfoot" target="_top"
+                >我的足迹</a
+              >
+            </div>
+          </div>
+        </li>
+        <li
+          class="site-nav-menu site-nav-cart site-nav-menu-empty site-nav-multi-menu J_MultiMenu"
+          id="J_MiniCart"
+          data-name="cart"
+          data-spm="1997525049"
+        >
+          <div class="site-nav-menu-hd">
+            <a
+              href="//cart.taobao.com/cart.htm?from=mini&amp;ad_id=&amp;am_id=&amp;cm_id=&amp;pm_id=1501036000a02c5c3739"
+              target="_top"
+              ><span class="site-nav-icon site-nav-icon-highlight"></span
+              ><span>购物车</span><strong class="h" id="J_MiniCartNum"></strong
+            ></a>
+          </div>
+          <div class="site-nav-menu-bd">
+            <div class="site-nav-menu-bd-panel menu-bd-panel"></div>
+          </div>
+        </li>
+        <li
+          class="site-nav-menu site-nav-favor site-nav-multi-menu J_MultiMenu"
+          id="J_SiteNavFavor"
+          data-name="favor"
+          data-spm="1997525053"
+        >
+          <div class="site-nav-menu-hd">
+            <a href="//shoucang.taobao.com/item_collect.htm" target="_top"
+              ><span class="site-nav-icon"></span><span>收藏夹</span></a
+            ><span class="site-nav-arrow"
+              ><span class="site-nav-icon"></span></span
+            >
+          </div>
+          <div class="site-nav-menu-bd site-nav-menu-list">
+            <div class="site-nav-menu-bd-panel menu-bd-panel">
+              <a href="//shoucang.taobao.com/item_collect.htm" target="_top"
+                >收藏的宝贝</a
+              ><a
+                href="//shoucang.taobao.com/shop_collect_list.htm"
+                target="_top"
+                >收藏的店铺</a
+              >
+            </div>
+          </div>
+        </li>
+        <li
+          class="site-nav-menu site-nav-catalog"
+          id="J_SiteNavCatalog"
+          data-name="catalog"
+          data-spm="1997563209"
+        >
+          <div class="site-nav-menu-hd">
+            <a href="//www.taobao.com/tbhome/page/market-list" target="_top"
+              ><span>商品分类</span></a
+            ><a
+              href="//ishop.taobao.com/openshop/tb_open_shop_landing.htm"
+              target="_top"
+              ><span>免费开店</span></a
+            >
+          </div>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li
+          class="site-nav-menu site-nav-seller site-nav-multi-menu J_MultiMenu"
+          id="J_SiteNavSeller"
+          data-name="seller"
+        >
+          <div class="site-nav-menu-hd">
+            <a
+              href="//myseller.taobao.com/home.htm/QnworkbenchHome/"
+              target="_top"
+              ><span>千牛卖家中心</span></a
+            ><span class="site-nav-arrow"
+              ><span class="site-nav-icon"></span></span
+            >
+          </div>
+          <div class="site-nav-menu-bd site-nav-menu-list">
+            <div class="site-nav-menu-bd-panel menu-bd-panel">
+              <a
+                href="//myseller.taobao.com/home.htm/QnworkbenchHome/"
+                target="_top"
+                >开店入驻</a
+              ><a
+                href="//trade.taobao.com/trade/itemlist/list_sold_items.htm?toNew=true"
+                target="_top"
+                >已卖出的宝贝</a
+              ><a
+                href="//sell.taobao.com/auction/goods/goods_on_sale.htm"
+                target="_top"
+                >出售中的宝贝</a
+              ><a href="//fuwu.taobao.com/?tracelog=tbdd" target="_top"
+                >卖家服务市场</a
+              ><a href="//daxue.taobao.com/" target="_top">卖家培训中心</a
+              ><a
+                href="//healthcenter.taobao.com/home/health_home.htm"
+                target="_top"
+                >体检中心</a
+              ><a href="//qn.taobao.com/headline/news" target="_top"
+                >电商学习中心</a
+              >
+            </div>
+          </div>
+        </li>
+        <li
+          class="site-nav-menu site-nav-service site-nav-multi-menu J_MultiMenu"
+          id="J_SiteNavService"
+          data-name="service"
+        >
+          <div class="site-nav-menu-hd">
+            <a href="https://consumerservice.taobao.com" target="_top"
+              ><span>联系客服</span></a
+            ><span class="site-nav-arrow"
+              ><span class="site-nav-icon"></span></span
+            >
+          </div>
+          <div class="site-nav-menu-bd site-nav-menu-list">
+            <div class="site-nav-menu-bd-panel menu-bd-panel">
+              <a
+                href="https://consumerservice.taobao.com/online-help"
+                target="_top"
+                >消费者客服</a
+              ><a href="//helpcenter.taobao.com/index?from=high" target="_top"
+                >卖家客服</a
+              ><a
+                href="https://market.m.taobao.com/app/tbhome/feedback/index.html?from=https%3A%2F%2Fwww.taobao.com%2F"
+                target="_top"
+                >意见反馈</a
+              ><a
+                href="https://market.m.taobao.com/app/im/chat/index.html"
+                target="_top"
+                >网页版旺旺</a
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </template>
 
 <style scope>
 .site-nav .site-nav-loading {
-  background: url("//img.alicdn.com/tps/i3/T1b1m3XkVpXXXXXXXX-32-32.gif") no-repeat center;
+  background: url("//img.alicdn.com/tps/i3/T1b1m3XkVpXXXXXXXX-32-32.gif")
+    no-repeat center;
 }
 @font-face {
   font-family: "global-iconfont";
   src: url("//at.alicdn.com/t/font_1404888168_2057645.eot");
-  src: url("//at.alicdn.com/t/font_1404888168_2057645.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1404888168_2057645.woff") format("woff"), url("//at.alicdn.com/t/font_1404888168_2057645.ttf") format("truetype"), url("//at.alicdn.com/t/font_1404888168_2057645.svg#uxiconfont") format("svg");
+  src: url("//at.alicdn.com/t/font_1404888168_2057645.eot?#iefix")
+      format("embedded-opentype"),
+    url("//at.alicdn.com/t/font_1404888168_2057645.woff") format("woff"),
+    url("//at.alicdn.com/t/font_1404888168_2057645.ttf") format("truetype"),
+    url("//at.alicdn.com/t/font_1404888168_2057645.svg#uxiconfont")
+      format("svg");
 }
 .site-nav .site-nav-icon {
   font-family: "global-iconfont";
@@ -294,7 +465,8 @@
   margin-top: -210px;
   width: 584px;
   height: 420px;
-  background: url(//img.alicdn.com/tps/TB1pH4SLpXXXXXEXVXXXXXXXXXX-584-419.png) no-repeat;
+  background: url(//img.alicdn.com/tps/TB1pH4SLpXXXXXEXVXXXXXXXXXX-584-419.png)
+    no-repeat;
   z-index: 100000000;
 }
 .tb-ie-updater-box a {
@@ -304,7 +476,7 @@
   font-size: 14px;
   width: 130px;
   height: 32px;
-  background-color: #FFF;
+  background-color: #fff;
   text-align: center;
   line-height: 32px;
 }
@@ -335,10 +507,10 @@
   float: left;
   margin-right: 7px;
   font-size: 12px;
-  color: #6C6C6C;
+  color: #6c6c6c;
 }
 .site-nav .site-nav-menu .site-nav-menu-hd a:hover {
-  color: #FF4400;
+  color: #ff4400;
 }
 .site-nav .site-nav-menu .site-nav-menu-hd a span {
   float: left;
@@ -356,8 +528,8 @@
   top: 0;
   padding: 8px;
   line-height: normal;
-  border: 1px solid #EEEEEE;
-  background: #FFF;
+  border: 1px solid #eeeeee;
+  background: #fff;
 }
 .site-nav .site-nav-menu .site-nav-menu-bd .site-nav-menu-iframe-shim {
   z-index: -1;
@@ -380,31 +552,39 @@
   padding: 0 5px;
   line-height: 28px;
   white-space: nowrap;
-  color: #6C6C6C;
+  color: #6c6c6c;
   font-size: 12px;
 }
 .site-nav .site-nav-menu .site-nav-menu-list .site-nav-menu-bd-panel a:hover {
-  color: #6C6C6C;
-  background: #F5F5F5;
+  color: #6c6c6c;
+  background: #f5f5f5;
 }
 .site-nav .site-nav-menu .site-nav-menu-list .site-nav-menu-bd-panel a span {
   margin-left: 5px;
 }
-.site-nav .site-nav-menu .site-nav-menu-list .site-nav-menu-bd-panel .site-nav-btn {
+.site-nav
+  .site-nav-menu
+  .site-nav-menu-list
+  .site-nav-menu-bd-panel
+  .site-nav-btn {
   margin: 5px 8px 0;
-  color: #FFF;
+  color: #fff;
   line-height: 25px;
 }
-.site-nav .site-nav-menu .site-nav-menu-list .site-nav-menu-bd-panel .site-nav-btn:hover {
-  color: #FFF;
-  background: #FF4400;
+.site-nav
+  .site-nav-menu
+  .site-nav-menu-list
+  .site-nav-menu-bd-panel
+  .site-nav-btn:hover {
+  color: #fff;
+  background: #ff4400;
 }
 .site-nav .site-nav-menu-hover .site-nav-menu-hd {
   padding: 0 5px;
   border-width: 0 1px;
   border-style: solid;
-  border-color: #EEEEEE;
-  background: #FFF;
+  border-color: #eeeeee;
+  background: #fff;
 }
 .site-nav .site-nav-menu-hover .site-nav-menu-bd {
   display: block;
@@ -526,7 +706,11 @@
   .site-nav-at-mobile .site-nav-sitemap .site-nav-menu-bd-panel .mod li {
     width: 20%;
   }
-  .site-nav-at-mobile .site-nav-sitemap .site-nav-menu-bd-panel .mod-b .mod-wrap {
+  .site-nav-at-mobile
+    .site-nav-sitemap
+    .site-nav-menu-bd-panel
+    .mod-b
+    .mod-wrap {
     border-right: none;
   }
   .site-nav-at-mobile .site-nav-weekend {
@@ -540,7 +724,7 @@
   width: 288px;
   border-top: 0;
   position: absolute;
-  background: #FFF;
+  background: #fff;
   box-shadow: 1px 1px 2px #ddd;
   z-index: 10000000000;
 }
@@ -549,11 +733,11 @@
   line-height: 37px;
   position: relative;
   text-align: center;
-  border-bottom: 1px solid #EEE;
+  border-bottom: 1px solid #eee;
 }
 .tmsg_panel_foot {
   height: 32px;
-  border-top: 1px solid #EEE;
+  border-top: 1px solid #eee;
   position: relative;
 }
 
@@ -578,6 +762,4 @@
 .site-nav .site-nav-region-list .site-nav-region-item:hover {
   background-color: #f4f4f4;
 }
-
-
 </style>
