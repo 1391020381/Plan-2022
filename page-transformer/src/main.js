@@ -1,3 +1,4 @@
+// 导出环境无关的(通用的)应用代码
 import { createSSRApp } from "vue";
 import App from "./App.vue";
 import { add, defaultImg } from "./utils/lazy";

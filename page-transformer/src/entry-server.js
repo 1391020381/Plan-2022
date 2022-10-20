@@ -1,3 +1,4 @@
+//  使用某个框架的 SSR API 渲染应用
 import { renderToString } from "vue/server-renderer";
 import { createApp } from "./main";
 import module from "./utils/data";

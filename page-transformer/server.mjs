@@ -1,3 +1,5 @@
+//  main application server
+
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "url";
@@ -15,6 +17,7 @@ export async function createServer(
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const resolve = (p) => path.resolve(__dirname, p);
 
+  // template  模板
   const indexProd = isProd
     ? fs.readFileSync(resolve("dist/index.html"), "utf-8")
     : "";
@@ -26,6 +29,8 @@ export async function createServer(
    */
   let vite;
   if (!isProd) {
+    // 以中间件模式创建 Vite 应用 这将禁用 Vite 自身的 HTML服务逻辑
+    // 并让上级服务器接管控制
     vite = await (
       await import("vite")
     ).createServer({
@@ -47,6 +52,7 @@ export async function createServer(
       appType: "custom",
     });
     // use vite's connect instance as middleware
+    // 使用 vite 的Connect 实例作为中间件
     app.use(vite.middlewares);
   } else {
     app.use(
@@ -57,6 +63,7 @@ export async function createServer(
   }
 
   app.use("*", async (req, res) => {
+    // 供给服务端渲染的HTML
     try {
       const url = req.originalUrl.replace("/test/", "/");
 
@@ -64,7 +71,11 @@ export async function createServer(
       if (!isProd) {
         // always read fresh template in dev
         template = fs.readFileSync(resolve("index.html"), "utf-8");
+        // 应用 Vite HTML 转换 这将会注入 Vite HMR 客服端
+        // 同时也会 从 Vite 插件应用 HTML转换
         template = await vite.transformIndexHtml(url, template);
+        //  加载服务器入口 vite.ssrLoadModule 将自动转换
+        //
         render = (await vite.ssrLoadModule("/src/entry-server.js")).render;
       } else {
         template = indexProd;
@@ -94,3 +105,18 @@ if (!isTest) {
     })
   );
 }
+
+// package.json  dev:"node server"
+
+// 为了生产环境构建
+// 正常生成一个客户端构建
+// 再生成一个SSR构建,使其通过 import() 直接加载,这样便无需再使用Vite的 ssrLoadModule
+
+// --ssr 标志标明这将会是一个 SSR构建。同时需要指定SSR的入口
+// {
+//   "scripts": {
+//     "dev": "node server",
+//     "build:client": "vite build --outDir dist/client",
+//     "build:server": "vite build --outDir dist/server --ssr src/entry-server.js "
+//   }
+// }

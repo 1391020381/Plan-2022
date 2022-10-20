@@ -1,3 +1,4 @@
+//  将应用挂载到一个DOM元素上
 import { createApp } from "./main";
 
 const app = createApp({
