@@ -9,6 +9,7 @@ specifiers:
   '@vitejs/plugin-react': ^2.1.0
   autoprefixer: ^10.4.12
   babel-plugin-styled-components: ^2.0.7
+  husky: ^8.0.1
   postcss: '>=8.3.11 <9.0.0'
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -33,6 +34,7 @@ devDependencies:
   '@vitejs/plugin-react': registry.npmmirror.com/@vitejs/plugin-react/2.1.0_vite@3.1.8
   autoprefixer: mirrors.tencent.com/autoprefixer/10.4.12_postcss@8.4.18
   babel-plugin-styled-components: mirrors.tencent.com/babel-plugin-styled-components/2.0.7_styled-components@5.3.6
+  husky: mirrors.tencent.com/husky/8.0.1
   postcss: mirrors.tencent.com/postcss/8.4.18
   react-is: mirrors.tencent.com/react-is/16.13.1
   sass: registry.npmmirror.com/sass/1.55.0
@@ -1130,6 +1132,14 @@ packages:
     version: 3.3.2
     dependencies:
       react-is: mirrors.tencent.com/react-is/16.13.1
+    dev: true
+
+  mirrors.tencent.com/husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==, registry: https://mirrors.cloud.tencent.com/npm/, tarball: https://mirrors.tencent.com/npm/husky/-/husky-8.0.1.tgz}
+    name: husky
+    version: 8.0.1
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   mirrors.tencent.com/import-fresh/3.3.0:
