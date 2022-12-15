@@ -49,3 +49,23 @@ const y:[SetState,State] = [setState,state]
 * let 声明的简单类型字面量会拓宽类型
 * const 声明的简单类型字面量会收窄
 * const 声明的对象变量会自动推断对应的类型 as const 收窄 让每个 key 都是固定类型。
+
+# 函数类型
+
+- 参数 返回值 默认 可选 剩余
+
+* this 重载
+
+# 类类型
+
+- 继承 public private protected static readonly set get
+- 抽象类 implements
+- 类的类型
+
+# 接口 interface
+
+- 可选？
+- 只读
+
+* 函数类型
+*
