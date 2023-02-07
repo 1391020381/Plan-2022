@@ -5,10 +5,11 @@ import { UpdateCatDto } from './dto/update-cat.dto';
 import {HttpExceptionFilter} from '../../common/http-exception.filter'
 import { JoiValidationPipe} from '../../common/Joi-validation.pipe'
 import {LoggingInterceptor} from '../../common/logging.interceptor'
+import { ConfigService} from '@nestjs/config'
 @Controller('cats')
 @UseInterceptors(LoggingInterceptor)
 export class CatsController {
-  constructor(private readonly catsService: CatsService) {}
+  constructor(private readonly catsService: CatsService,private configService:ConfigService) {}
 
   @Post()
   // @UsePipes(new JoiValidationPipe())
@@ -19,13 +20,10 @@ export class CatsController {
   @Get()
   @UseFilters(new HttpExceptionFilter())
   findAll() {
-   return this.catsService.findAll();
-  //  throw new HttpException({
-  //   status:HttpStatus.FORBIDDEN,
-  //   error:'This is a custom message-------xxxxxxxxxxx',
-  //  },HttpStatus.FORBIDDEN)
-  // console.log(window)
-  // return {UseFilters:'UseFilters'}
+    const dbUser = this.configService.get<string>('DATABASE_USER')
+    const dbPassword = this.configService.get<string>('DATABASE_PASSWORD')
+    console.log('dbUser:',dbUser,process.env.NODE_ENV,'dbPassword:',dbPassword)
+    return this.catsService.findAll();
   }
 
   // @Get(':id')
