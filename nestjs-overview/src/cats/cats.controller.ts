@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete,Redirect,Query,HttpException,HttpStatus, UseFilters,UsePipes, UseInterceptors } from '@nestjs/common';
+
+import { Controller, Get, Post, Body, Patch, Param, Delete,Redirect,Query,HttpException,HttpStatus, UseFilters,UsePipes, UseInterceptors,Version,VERSION_NEUTRAL } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
@@ -6,7 +7,12 @@ import {HttpExceptionFilter} from '../../common/http-exception.filter'
 import { JoiValidationPipe} from '../../common/Joi-validation.pipe'
 import {LoggingInterceptor} from '../../common/logging.interceptor'
 import { ConfigService} from '@nestjs/config'
-@Controller('cats')
+
+@Controller({
+  path:'cats',
+  // version:['1','2']
+  // version:VERSION_NEUTRAL
+})
 @UseInterceptors(LoggingInterceptor)
 export class CatsController {
   constructor(private readonly catsService: CatsService,private configService:ConfigService) {}
@@ -16,7 +22,7 @@ export class CatsController {
   create(@Body() createCatDto: CreateCatDto) {
     return this.catsService.create(createCatDto);
   }
-
+  // @Version('1')
   @Get()
   @UseFilters(new HttpExceptionFilter())
   findAll() {
