@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete,Redirect,Query,HttpException,HttpStatus, UseFilters,UsePipes } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete,Redirect,Query,HttpException,HttpStatus, UseFilters,UsePipes, UseInterceptors } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import {HttpExceptionFilter} from '../../common/http-exception.filter'
 import { JoiValidationPipe} from '../../common/Joi-validation.pipe'
+import {LoggingInterceptor} from '../../common/logging.interceptor'
 @Controller('cats')
+@UseInterceptors(LoggingInterceptor)
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
@@ -17,11 +19,11 @@ export class CatsController {
   @Get()
   @UseFilters(new HttpExceptionFilter())
   findAll() {
-   // return this.catsService.findAll();
-   throw new HttpException({
-    status:HttpStatus.FORBIDDEN,
-    error:'This is a custom message-------xxxxxxxxxxx',
-   },HttpStatus.FORBIDDEN)
+   return this.catsService.findAll();
+  //  throw new HttpException({
+  //   status:HttpStatus.FORBIDDEN,
+  //   error:'This is a custom message-------xxxxxxxxxxx',
+  //  },HttpStatus.FORBIDDEN)
   // console.log(window)
   // return {UseFilters:'UseFilters'}
   }
