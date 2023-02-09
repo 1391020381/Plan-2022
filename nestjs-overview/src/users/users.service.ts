@@ -8,7 +8,11 @@ import { User } from './entities/user.entity';
 export class UsersService {
   constructor(@InjectRepository(User) private usersRepository: Repository<User>){}
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+    let user = new User();
+    user.firstName = '行云流水'
+    user.lastName = 'justdoit'
+    user.isActive = true
+    return this.usersRepository.save(user)
   }
 
   findAll():Promise<User[]> {
