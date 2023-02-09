@@ -6,6 +6,7 @@ import { ConfigModule} from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { User} from './users/entities/user.entity'
+import { UsersHttpModule } from './users-http/users-http.module';
 @Module({
   imports: [TypeOrmModule.forRoot({
     type:"mysql",
@@ -13,7 +14,7 @@ import { User} from './users/entities/user.entity'
     port:3306,
     username:"root",
     password:"171226q2",
-    database:"test",
+    database:"demo",
     entities:[User],
     synchronize:true
   }),ConfigModule.forRoot({
