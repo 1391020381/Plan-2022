@@ -9,9 +9,24 @@ import {PhotoMetadata} from './entities/photoMetadata.entity'
 export class PhotoService {
   constructor(@InjectRepository(Photo) private photoRepository: Repository<Photo>, 
   @InjectRepository(PhotoMetadata)
-  private readonly PhotoMetaRepository: Repository<PhotoMetadata>){}
+  private readonly photoMetaRepository: Repository<PhotoMetadata>){}
   create(createPhotoDto: CreatePhotoDto) {
-    return 'This action adds a new photo';
+    let photo = new Photo();
+    photo.name = 'Me and Bears';
+    photo.description = 'I am near polar bears';
+    photo.filename = 'photo-with-bears.jpg';
+    photo.views = 1;
+    photo.isPublished = true
+
+    // let metadata = new PhotoMetadata()
+    // metadata.height = 640;
+    // metadata.width = 480;
+    // metadata.compressed = true;
+    // metadata.comment = 'cybershoot';
+    // metadata.orientation = 'portait';
+    // metadata.photo = photo
+  return this.photoRepository.save(photo)
+  // return  this.photoMetaRepository.save(metadata)
   }
 
   findAll() {
