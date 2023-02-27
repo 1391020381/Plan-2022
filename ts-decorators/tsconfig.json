@@ -21,5 +21,11 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "test", "typings/**/*.d.ts", "**.js"]
+  "include": [
+    "src",
+    "test",
+    "typings/**/*.d.ts",
+    "**.js",
+    "decorators-principle.ts"
+  ]
 }
