@@ -7,10 +7,14 @@ import {
   Param,
   Delete,
   NotFoundException,
+  ParseIntPipe,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ForumService } from './forum.service';
 import { CreateForumDto } from './dto/create-forum.dto';
 import { UpdateForumDto } from './dto/update-forum.dto';
+import { CreatePostDto } from './dto/create-post.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
 import { PostEntity } from './types';
 import { isNil } from 'lodash';
 let posts: PostEntity[] = [
@@ -25,12 +29,19 @@ let posts: PostEntity[] = [
 export class ForumController {
   constructor(private readonly forumService: ForumService) {}
 
-  // @Post()
-  // create(@Body() createForumDto: CreateForumDto) {
-  //   return this.forumService.create(createForumDto);
-  // }
   @Post()
-  async store() {
+  create(
+    @Body(
+      new ValidationPipe({
+        transform: true,
+        forbidUnknownValues: true,
+        validationError: { target: false },
+        groups: ['create'],
+      }),
+    )
+    data: CreatePostDto,
+  ) {
+    // return this.forumService.create(createForumDto);
     const newPost: PostEntity = {
       id: Math.max(...posts.map(({ id }) => id + 1)),
       title: '新增文章标题',
@@ -45,7 +56,7 @@ export class ForumController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', new ParseIntPipe()) id: number) {
     //return this.forumService.findOne(+id);
     const post = posts.find((item) => item.id === Number(id));
     if (isNil(post)) {
@@ -55,7 +66,18 @@ export class ForumController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateForumDto: UpdateForumDto) {
+  update(
+    @Param('id') id: string,
+    @Body(
+      new ValidationPipe({
+        transform: true,
+        forbidUnknownValues: true,
+        validationError: { target: false },
+        groups: ['update'],
+      }),
+    )
+    data: UpdatePostDto,
+  ) {
     // return this.forumService.update(+id, updateForumDto);
     let toUpdate = posts.find((item) => item.id === Number(id));
     if (isNil(toUpdate)) {
@@ -67,7 +89,7 @@ export class ForumController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id', new ParseIntPipe()) id: number) {
     // return this.forumService.remove(+id);
     const toDelete = posts.find((item) => item.id === Number(id));
     if (isNil(toDelete))
