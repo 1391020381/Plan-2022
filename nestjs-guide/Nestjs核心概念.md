@@ -14,3 +14,9 @@
 2. @Response() @Res() 响应数据
 3. @Next() 执行下一个中间件(一般用不到)
 4. @Session() session 对象（一般用不到）
+
+# DTO 与数据验证
+
+- dto 是用于对请求数据结构进行定义的一个类,用于 aop 编程。
+- 常用于对 body query 等请求数据进行验证。
+- 常用的验证库 class-validator
