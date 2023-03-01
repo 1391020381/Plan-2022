@@ -17,6 +17,9 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PostEntity } from './types';
 import { isNil } from 'lodash';
+import { ExampleProvider } from './providers/example.provider';
+import { Factory } from './providers/factory';
+import { OneProvider } from './providers/one.provider';
 let posts: PostEntity[] = [
   { title: '第一篇文章标题', body: '第一篇文章内容' },
   { title: '第二篇文章标题', body: '第二篇文章内容' },
