@@ -31,3 +31,26 @@ providers: [
 
 * provide 是字符串的时候, 通过 @Inject('ID-EXAMPLE') private idExp: ExampleProvider 注入
 * provide 是 class 时候 可以通过 private valExp: ExampleProvider 构造函数来注入
+
+# 模块详解
+
+- 模块是一个功能的集合，比如 user forum 等 包含了各自控制器 服务等等。
+
+## Feature modules
+
+## Shared modules
+
+1. we first need to export the CatsService provider by adding it to the module's exports array,
+2. Now any module that imports the CatsModule has access to the CatsService and will share the same instance with all other modules that import it as well.
+
+## Module re-exporting
+
+- In addition, they can re-export modules that they import
+
+## Dependency injection
+
+## Global modules
+
+- @Global
+
+## Dynamic modules
