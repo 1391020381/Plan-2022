@@ -54,7 +54,7 @@
 - nest g resource [name] 一个单独的模块
 
 * @Request() @Req() req
-* @Response() @Res() res
+* @Response() @Res() res @Res() is simply an alias for @Response()
 * @Next() next
 * @Session() req.session
 * @Param(key?:string) req.params / req.paramsp[key]
@@ -63,3 +63,13 @@
 * @Headers(name?:string) req.headers /req.headers[name]
 * @Ip() req.ip
 * @HostParams() req.hosts
+
+* Route wildcards 路由通配符
+* Status code @HttpCode
+* Headers @Headers
+* Redirection @Redirection
+* Route parameters
+
+* Request payloads DTO(Data Transfer Object) schema.
+
+# Providers
