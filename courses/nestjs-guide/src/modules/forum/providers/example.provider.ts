@@ -13,4 +13,8 @@ export class ExampleProvider {
     useAlias() {
         return '别名提供者';
     }
+
+    abc() {
+        return 'abc';
+    }
 }

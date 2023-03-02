@@ -17,6 +17,7 @@ import { PostService } from './services/post.service';
 const exampleTest = {
     useValue: () => 'useValue提供者',
     useAlias: () => '别名提供者',
+    abc: () => 'abc',
 };
 const example = new ExampleProvider();
 @Module({

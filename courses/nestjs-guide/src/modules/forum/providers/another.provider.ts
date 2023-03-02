@@ -7,6 +7,6 @@ export class AnotherProvider {
     }
 
     useFactory() {
-        return '构造器提供者2';
+        return '构造器提供者2，构造函数注入';
     }
 }

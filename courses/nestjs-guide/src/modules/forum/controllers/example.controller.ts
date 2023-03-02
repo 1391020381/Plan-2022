@@ -10,6 +10,7 @@ import { OneProvider } from '../providers/one.provider';
 export class ExampleController {
     constructor(
         private valExp: ExampleProvider,
+        // private acExp: OneProvider,
         @Inject('ID-EXAMPLE') private idExp: ExampleProvider,
         @Inject('FACTORY-EXAMPLE') private ftExp: Factory,
         @Inject('ALIAS-EXAMPLE') private asExp: ExampleProvider,
@@ -19,7 +20,10 @@ export class ExampleController {
 
     @Get('value')
     async useValue() {
-        return this.valExp.useValue();
+        // return this.valExp.useValue();
+        // return this.valExp.useAlias();
+        console.log('xxxxxx:', this.valExp, JSON.stringify(this.valExp));
+        return this.valExp.abc();
     }
 
     @Get('id')
@@ -40,6 +44,7 @@ export class ExampleController {
     @Get('async')
     async useAsync() {
         return this.acExp.useAsync();
+        // return this.acExp.useFactory();
     }
 
     @Get('circular')
