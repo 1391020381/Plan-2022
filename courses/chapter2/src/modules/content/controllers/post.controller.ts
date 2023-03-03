@@ -12,7 +12,7 @@ import {
 
 import { PaginateOptions } from '../../database/types';
 import { PostService } from '../services';
-
+// import { User } from '@/modules/core/helpers/user-decorator';
 @Controller('posts')
 export class PostController {
     constructor(protected service: PostService) {}
@@ -22,6 +22,7 @@ export class PostController {
         @Query()
         options: PaginateOptions,
     ) {
+        console.log('content-post-options:', options);
         return this.service.paginate(options);
     }
 

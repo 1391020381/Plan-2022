@@ -11,6 +11,7 @@ import { PostBodyType } from '../constants';
 
 /**
  * 文章模型
+ * @Entity（） 传参数，参数就是 替代表名
  */
 @Entity('content_posts')
 export class PostEntity extends BaseEntity {

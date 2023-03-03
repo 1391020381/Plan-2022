@@ -13,6 +13,9 @@ import { PostSubscriber } from './subscribers';
 
 @Module({
     imports: [
+        // 此模块使用 forFeature() 方法定义在当前范围中注册哪些存储库。
+        // 这样,我们就使用 @InjectRepository() 装饰器将 PostEntity注入到 Service
+        // https://docs.nestjs.cn/9/techniques?id=%e6%95%b0%e6%8d%ae%e5%ba%93
         TypeOrmModule.forFeature([PostEntity]),
         DatabaseModule.forRepository([PostRepository]),
     ],
