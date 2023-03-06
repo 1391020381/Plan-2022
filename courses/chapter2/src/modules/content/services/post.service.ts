@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
-import { isFunction, isNil, omit } from 'lodash';
-
+// import { isFunction, isNil, omit } from 'lodash';
+import { isFunction, isNil } from 'lodash';
 import { EntityNotFoundError, IsNull, Not, SelectQueryBuilder } from 'typeorm';
 
 import { paginate } from '@/modules/database/helpers';
@@ -58,7 +58,9 @@ export class PostService {
      * @param data
      */
     async update(data: Record<string, any>) {
-        await this.repository.update(data.id, omit(data, ['id']));
+        // omi 删除data上对应的id
+        // await this.repository.update(data.id, omit(data, ['id']));
+        await this.repository.update(data.id, data);
         return this.detail(data.id);
     }
 
@@ -67,7 +69,10 @@ export class PostService {
      * @param id
      */
     async delete(id: string) {
+        console.log('删除文章-id:', id);
+        // findOneByOrFail  查找与给定FindOptions匹配的第一个实体。如果没有匹配，则拒绝返回的承诺。
         const item = await this.repository.findOneByOrFail({ id });
+        console.log('删除文章-item:', item);
         return this.repository.remove(item);
     }
 

@@ -19,6 +19,7 @@ export class PostSubscriber {
     }
 
     listenTo() {
+        // 标识 subscriber 只监听 PostEntity的事件
         return PostEntity;
     }
 

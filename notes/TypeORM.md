@@ -62,3 +62,7 @@ SELECT ... FROM users user
 
 users 表名  user 别名
 ```
+
+## EventSubscriber
+
+- 将类标记为事件订阅者，该订阅者可以侦听特定实体事件或任何实体的事件。使用 QueryBuilder 和存储库/管理器方法触发事件
