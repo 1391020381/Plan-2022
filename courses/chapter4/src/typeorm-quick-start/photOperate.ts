@@ -2,54 +2,32 @@ import { AppDataSource } from './config/database.config';
 
 import { Photo } from './entity/Photo';
 import { PhotoMetadata } from './entity/PhotoMetadata';
+import { Album } from './entity/Album';
 
 const photOperate = async () => {
-    // // create a photo
-    // const photo = new Photo();
-    // photo.name = 'Me and Bears';
-    // photo.description = 'I am near polar bears';
-    // photo.filename = 'photo-with-bears.jpg';
-    // photo.views = 1;
-    // photo.isPublished = true;
+    // create a few albums
+    const album1 = new Album();
+    album1.name = 'Bears';
+    await AppDataSource.manager.save(album1);
 
-    // // create a photo metadata
-    // const metadata = new PhotoMetadata();
-    // metadata.height = 640;
-    // metadata.width = 480;
-    // metadata.compressed = true;
-    // metadata.comment = 'cybershoot';
-    // metadata.orientation = 'portrait';
-    // metadata.photo = photo; // this way we connect them
-    // // get entity repositories
-    // const photoRepository = AppDataSource.getRepository(Photo);
-    // const metadataRepository = AppDataSource.getRepository(PhotoMetadata);
-    // // console.log('metadataRepository:', metadataRepository);
-    // // first we should save a photo
-    // await photoRepository.save(photo);
-
-    // // photo is saved. Now we need to save a photo metadata
-    // await metadataRepository.save(metadata);
-    // const photos = await photoRepository.find({ relations: ['metadata'] });
-    // console.log('photos:', photos);
-    // // done
-    // console.log(
-    //     'Metadata is saved, and the relation between metadata and photo is created in the database too',
-    // );
+    const album2 = new Album();
+    album2.name = 'Me';
+    await AppDataSource.manager.save(album2);
 
     // create photo object
     const photo = new Photo();
     photo.name = 'Me and Bears';
-    photo.description = 'I am near polar bears------xxxxxxxxxxxxxx';
+    photo.description = 'I am near polar bears';
     photo.filename = 'photo-with-bears.jpg';
     photo.views = 1;
     photo.isPublished = true;
-
+    photo.albums = [album1, album2];
     // create photo metadata object
     const metadata = new PhotoMetadata();
     metadata.height = 640;
     metadata.width = 480;
     metadata.compressed = true;
-    metadata.comment = 'cybershoot-------xxxxxxxxxxx';
+    metadata.comment = 'cybershoot';
     metadata.orientation = 'portrait';
     // metadata.photo = photo;
     photo.metadata = metadata; // this way we connect them
@@ -59,11 +37,12 @@ const photOperate = async () => {
 
     // saving a photo also save the metadata
     await photoRepository.save(photo);
-    // const photos = await photoRepository.find({
-    //     relations: {
-    //         metadata: true,
-    //     },
-    // });
+    const photos = await photoRepository.find({
+        relations: {
+            metadata: true,
+            albums: true,
+        },
+    });
     const photosMetaDataRepository = AppDataSource.getRepository(PhotoMetadata);
     const photosMeta = await photosMetaDataRepository.find({
         relations: {
@@ -71,6 +50,7 @@ const photOperate = async () => {
         },
     });
     console.log('关联存储与关联查询:', photosMeta);
+    console.log('关联存储查询与关联查询:', photos);
 };
 
 export { photOperate };
