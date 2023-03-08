@@ -66,3 +66,20 @@ users 表名  user 别名
 ## EventSubscriber
 
 - 将类标记为事件订阅者，该订阅者可以侦听特定实体事件或任何实体的事件。使用 QueryBuilder 和存储库/管理器方法触发事件
+
+* @OneToOne 的新装饰器,它允许我们在两个实体之间创建一对一的关系。
+* type=> Photo 是一个函数 ,返回我们想要与之建立关系的实体类。
+* 由于特定语言的关系,我们只能用一个返回类的函数,而不是直接使用该类。同时也可以把它写成 ()=> Photo 但是 type => Photo 显得代码更有可读性。 type 变量本身不包含任何内容。
+* @JoinColumn 装饰器 表明实体键的对应关系。 关系可以是单向的或双向的。但是只有一方是拥有者。在关系所有者方面需要使用 @JoinColumn 装饰器
+
+* phots => photo.metadata is a function that returns the name of the inverse side of the relation.
+* Here we show that the metadata property of the Photo class is where we store PhotoMetadata in the Photo class.
+
+# 一对一关系
+
+- Photo PhotoMetadata
+
+* 在关系拥有的一方 PhotoMetadata 通过 @JoinColumn() 来创建字段
+* 在关系拥有的一方 通过 @OneToOne （type）=> Photo 来告知要关联的对象 （photo) => photo.metadata 在双向关系里面 告知 photo 中的 metadata 字段来保存 PhotoMetadata 数据
+
+* 在 Photo 中 通过 @OneToOne (type)=> PhotoMetadata 来告知需要创建关联关系的实体 (photoMetadata) => photoMetadata.photo 告知 photoMetadata 中 photo 字段来保存 Photo 数据 且不用 @JoinColumn()

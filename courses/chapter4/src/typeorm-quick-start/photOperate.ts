@@ -29,7 +29,8 @@ const photOperate = async () => {
 
     // photo is saved. Now we need to save a photo metadata
     await metadataRepository.save(metadata);
-
+    const photos = await photoRepository.find({ relations: ['metadata'] });
+    console.log('photos:', photos);
     // done
     console.log(
         'Metadata is saved, and the relation between metadata and photo is created in the database too',
