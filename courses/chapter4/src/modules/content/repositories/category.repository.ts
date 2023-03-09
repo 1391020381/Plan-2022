@@ -12,6 +12,7 @@ export class CategoryRepository extends TreeRepository<CategoryEntity> {
      * 构建基础查询器
      */
     buildBaseQB() {
+        // 构建关联查询 category 并关联 需要加在的关系 category.parent   此关系表的别名parent
         return this.createQueryBuilder('category').leftJoinAndSelect('category.parent', 'parent');
     }
 
@@ -30,6 +31,7 @@ export class CategoryRepository extends TreeRepository<CategoryEntity> {
      * @param options
      */
     findRoots(options?: FindTreeOptions) {
+        // 防止 SQL 注入
         const escapeAlias = (alias: string) => this.manager.connection.driver.escape(alias);
         const escapeColumn = (column: string) => this.manager.connection.driver.escape(column);
 
