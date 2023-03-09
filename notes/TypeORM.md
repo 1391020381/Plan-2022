@@ -83,3 +83,10 @@ users 表名  user 别名
 * 在关系拥有的一方 通过 @OneToOne （type）=> Photo 来告知要关联的对象 （photo) => photo.metadata 在双向关系里面 告知 photo 中的 metadata 字段来保存 PhotoMetadata 数据
 
 * 在 Photo 中 通过 @OneToOne (type)=> PhotoMetadata 来告知需要创建关联关系的实体 (photoMetadata) => photoMetadata.photo 告知 photoMetadata 中 photo 字段来保存 Photo 数据 且不用 @JoinColumn()
+
+# 自定义存储库
+
+- 你可以创建一个自定义存储库,其中应包含使用数据库的方法。
+
+* 通常为单个实体创建自定义存储库,并包含其特定查询。
+* 这个方法的最好的地方是在 Repository，所以我们可以这样称呼它 userRepository.findByName（...）
