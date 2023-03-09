@@ -12,6 +12,7 @@ import { PostService } from './services/post.service';
 import { PostSubscriber } from './subscribers';
 
 @Module({
+    // 导入模块的列表，这些模块 导出了此模块中所需的提供者
     imports: [
         // 此模块使用 forFeature() 方法定义在当前范围中注册哪些存储库。
         // 这样,我们就使用 @InjectRepository() 装饰器将 PostEntity注入到 Service
@@ -21,6 +22,7 @@ import { PostSubscriber } from './subscribers';
     ],
     controllers: [PostController],
     providers: [PostService, SanitizeService, PostSubscriber],
+    // 由本模块提供并应用在其他模块中可用的提供者的子集
     exports: [PostService, DatabaseModule.forRepository([PostRepository])],
 })
 export class ContentModule {}
