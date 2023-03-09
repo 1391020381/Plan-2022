@@ -10,6 +10,7 @@ async function bootstrap() {
     // 允许跨域
     app.enableCors();
     await app.listen(3000);
+
     //   typeormDemo();
 }
 bootstrap();

@@ -94,3 +94,7 @@ users 表名  user 别名
 # 树实体
 
 - 物化路径(也称为路径枚举) 是在数据库中存储树结构的另一种模式。简单有效
+
+* [active-record-data-mapper](https://typeorm.io/active-record-data-mapper)
+
+* CustomRepository 是基于这个 entityrepository 继承后实现的，这个是用来通过 entity 获取一个默认的 repository 实例，而 customrepository 可以让你在默认的基础上新增一些方法，typeorm 是自己可以通过执行 entityrepostory 后获得的默认 repo 实例的 extend 方法扩展一些额外自定义的方法，但是通过 extend 链式扩展的方法显然不符合 nest 规范，所以我们定义了一个 customrepository 来代替 extend 方法扩展自定义的 repo 操作。
