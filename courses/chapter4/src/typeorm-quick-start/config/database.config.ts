@@ -9,14 +9,17 @@ import { Author } from '../entity/Author';
 
 import { Album } from '../entity/Album';
 
+import { Category } from '../entity/Category';
+
 const AppDataSource = new DataSource({
     type: 'mysql',
     host: '127.0.0.1',
     username: 'root',
     password: '171226q2',
     database: 'typeorm-quick-start',
-    entities: [Photo, PhotoMetadata, Author, Album],
-    // entities: ['../entity/**/.ts'],
+    entities: [Photo, PhotoMetadata, Author, Album, Category],
+    // eslint-disable-next-line
+    // entities: ['../entity/*.ts'],
     synchronize: true,
     logging: false,
 });
