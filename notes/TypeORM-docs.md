@@ -271,3 +271,15 @@ export class Category {
 
 
 ```
+
+# 视图实体
+
+# 分离实体定义
+
+# 什么是关系
+
+- 关系可以帮助轻松与相关实体合作。
+- 一对一 使用 @OnetoOne
+- 多对一 使用 @ManyToOne
+- 一对多 使用 @OneToMany
+- 多对多 使用 @MnayToMany
