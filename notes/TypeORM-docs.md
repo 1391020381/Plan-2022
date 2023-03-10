@@ -283,3 +283,75 @@ export class Category {
 - 多对一 使用 @ManyToOne
 - 一对多 使用 @OneToMany
 - 多对多 使用 @MnayToMany
+
+## @JoinColumn 选项
+
+- @JoinColumn 不仅定义了关系的哪一侧包含带有外建的连接列,还允许自定义连接列和引用的列名
+
+## JoinTable 选项
+
+- @JoinTable 用于 多对多 的关系 并描述 junction 表的连接列。联结表是由 TypeORM 自动创建的一个特殊的单独表,其中的列引用相关实体。 可以使用 @JoinColumn 更改联结表及其引用列的列名
+
+## 一对一关系
+
+- 启动级联后,只需要 一次 save 调用即可保存此关系。
+
+* @JoinColumn 必须仅仅设置在关系的一侧且必须在数据库中具有外建的一侧。
+* 双向关系
+
+## 多对一 一对多的关系
+
+## 多对多关系
+
+# Eager 和 Lazy 关系
+
+# 关系常见问题
+
+# 什么是 EntityManager
+
+- 使用 EntityManager 可以管理 (insert update delete load 等) 任何实体。 EntityManager 就像放一个实体存储库的集合的地方。
+
+# 什么是 Repository
+
+- Repository 就像 EntityManager 一样,但其操作仅限于具体实体
+
+* 可以通过 getRepository(Entity)
+
+* 有三种类型的存储库
+* Repository 任何实体的常规存储库
+* TreeRepository 用于树实体的 Repository 的扩展存储库
+* MongoRepository - 具有特殊功能的存储库，仅用于 MongoDB。
+
+# Find 选项
+
+- 所有存储库和管理器 find 方法都接受可用于查询所需数据的特殊选项,而无需使用 QueryBuilder
+
+* select 表示必须选择对象的哪些属性
+* relations 关系需要加载主体
+* join 需要为实体执行联接 扩展版对的 relations
+* where 查询实体的简单条件
+
+## 进阶选项
+
+- TypeORM 提供了许多内置运算符,可用于创建更复杂的查询
+
+1. Not
+2. LessThan
+3. LessThanOrEqual
+4. MoreThan
+5. MoreThanOrEqual
+6. Equal
+7. Like
+
+# 自定义存储库
+
+- 创建一个自定义存储库,其中应包含使用数据库的方法。
+- 通常为单个实体创建自定义存储库,并包含其特定查询。
+
+# EntityManager API
+
+# Repository API
+
+# 使用 Query Buidler
+
+# Active Record 与 Data Mapper
