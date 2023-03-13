@@ -13,3 +13,5 @@ export const DtoValidation = (
         transformOptions?: ClassTransformOptions;
     } & { type?: Paramtype },
 ) => SetMetadata(DTO_VALIDATION_OPTIONS, options ?? {});
+
+// ?? 当左侧操作数为 null 或 undefined时,其返回右侧的操作数,否则返回左侧的操作数
