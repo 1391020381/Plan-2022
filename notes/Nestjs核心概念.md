@@ -54,3 +54,12 @@ providers: [
 - @Global
 
 ## Dynamic modules
+
+- Provides 是 Nest 的一个基本概念。许多基本的 Nest 类可能被视为 provide - service , repository factory helper 等等。 他们都可以通过 constructor 注入依赖关系。这意味着对象可以彼此创建各种关系,并且 连接 对象实例的功能在很大程度上可以委托给 Nest 运行时系统。Provider 只是一个用@Injectable() 装饰器注释的类。
+
+* @Injecttable() 附加有元数据,因此 Nest 知道这个类是一个 Nest provider。
+* 在 Nest 中 借助 ts 功能 管理依赖项非常容易,因此它们仅按类型进行解析。Nest 将 catsService 通过创建并返回一个实例来解析 CatsService。解析此依赖关系并将其传递给控制器的构造函数（或分配给指定的属性
+
+# 了解依赖注入 Angular
+
+- 注入依赖项的最常见的方法是在类的构造函数中声明它。当创建时 会通过查看构造函数的参数类型来确定该类需要哪些服务 或 其他依赖项。
