@@ -63,3 +63,10 @@ providers: [
 # 了解依赖注入 Angular
 
 - 注入依赖项的最常见的方法是在类的构造函数中声明它。当创建时 会通过查看构造函数的参数类型来确定该类需要哪些服务 或 其他依赖项。
+
+# 序列化
+
+- ClassSerializerInterceptor
+
+* 序列化(Serialization)是一个在网络响应中返回对象前的过程。
+* 为了提供一种直接的方式来执行这些操作,Nest 附带了这个 ClassSerializerInterceptor 类。 它使用类转换器来提供转换对象的声明性和可扩展方式。基于此类基础下,可以从类转换器中获取方法和调用 classToPalin() 函数返回的值。要这样做，可以将由 class-transformer 装饰器提供的规则应用在实体/DTO 类中。
