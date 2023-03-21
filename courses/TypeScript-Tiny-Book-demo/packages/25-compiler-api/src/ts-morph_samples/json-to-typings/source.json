@@ -1,0 +1,25 @@
+{
+  "name": "linbudu",
+  "age": 22,
+  "sex": "male",
+  "favors": [
+    "execrise",
+    "writting",
+    999
+  ],
+  "job": {
+    "name": "programmer",
+    "stack": "javascript",
+    "company": "alibaba"
+  },
+  "pets": [
+    {
+      "id": 1,
+      "type": "dog"
+    },
+    {
+      "id": 2,
+      "type": "cat"
+    }
+  ]
+}
