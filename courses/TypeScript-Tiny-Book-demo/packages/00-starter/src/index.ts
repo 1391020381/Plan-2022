@@ -1,5 +1,5 @@
-import { expectType } from 'tsd';
+import { expectType } from "tsd";
 
-expectType<string>('linbudu');
+expectType<string>("linbudu");
 
-console.log('Your TypeScript Playground works!');
+console.log("Your TypeScript Playground works!xxxx");
