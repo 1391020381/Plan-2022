@@ -1,41 +1,23 @@
+// 我们使用 interface声明一个结构,然后使用 这个结构来作为一个对象的类型标注即可
+
 interface IDescription {
-  name: string;
-  age: number;
-  male: boolean;
-}
-
-const obj1: IDescription = {
-  name: 'linbudu',
-  age: 599,
-  male: true,
-};
-
-interface IDescription2 {
-  name: string;
+  readonly name: string;
   age: number;
   male?: boolean;
   func?: Function;
 }
 
-const obj2: IDescription2 = {
-  name: 'linbudu',
+const obj1: IDescription = {
+  name: "linbudu",
   age: 599,
   male: true,
-  // 无需实现 func 也是合法的
 };
 
-obj2.male = false;
-obj2.func = () => {};
-
-interface IDescription3 {
-  readonly name: string;
-  age: number;
-}
-
-const obj3: IDescription3 = {
-  name: 'linbudu',
+const obj2: IDescription = {
+  name: "linbudu",
   age: 599,
+  male: true,
 };
 
-// 无法分配到 "name" ，因为它是只读属性
-obj3.name = '林不渡';
+// obj2.func();
+// obj2.name = "xxxx";

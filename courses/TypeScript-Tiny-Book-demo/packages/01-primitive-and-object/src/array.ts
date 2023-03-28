@@ -1,26 +1,18 @@
 const arr1: string[] = [];
-
 const arr2: Array<string> = [];
 
-const arr3: string[] = ['lin', 'bu', 'du'];
+// 元组 (Tuple)
 
-console.log(arr3[599]);
-
-const arr4: [string, string, string] = ['lin', 'bu', 'du'];
-
-const arr5: [string, number, boolean] = ['linbudu', 599, true];
+const arr4: [string, string, string] = ["lin", "bu", "du"];
 
 console.log(arr4[599]);
 
-const arr6: [string, number?, boolean?] = ['linbudu'];
+const arr5: [string, number, boolean] = ["linbudu", 5999, true];
+console.log(arr5[0], arr5[1], arr5[2]);
 
-// 这么写也可以
-// const arr6: [string, number?, boolean?] = ['linbudu', , ,];
+const arr6: [string, number?, boolean?] = ["linbudu"];
+console.log(arr6.length);
 
-type TupleLength = typeof arr6.length; // 1 | 2 | 3
+const arr7: [name: string, age: number, male: boolean] = ["linbudu", 599, true];
 
-const arr7: [name: string, age: number, male: boolean] = ['linbudu', 599, true];
-
-const [name, age, male, other] = arr5;
-
-export {};
+console.log(arr7[0]);
