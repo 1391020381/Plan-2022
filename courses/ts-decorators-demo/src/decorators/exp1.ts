@@ -52,3 +52,5 @@ export { exp1 };
 // decorator 通过 Object.defineProperty 来修改 target key 的行为。
 // Object.getOwnPropertyDescriptor(target,key)
 // createDecorator(decorator){} 返回 一个函数接受 target key 返回 decorator(target,key,descriptor)
+
+//
