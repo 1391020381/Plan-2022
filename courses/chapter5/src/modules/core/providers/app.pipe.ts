@@ -5,11 +5,20 @@ import { isObject, omit } from 'lodash';
 import { DTO_VALIDATION_OPTIONS } from '../constants';
 
 /**
+ * https://docs.nestjs.cn/9/pipes?id=%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ae%a1%e9%81%93
  * 全局管道,用于处理DTO验证
  */
+
+// export interface ArgumentMetadata {
+//     type: 'body' | 'query' | 'param' | 'custom';
+//     metadata?: Type<unknown>;
+//     data?: string;
+// }
 @Injectable()
 export class AppPipe extends ValidationPipe {
     async transform(value: any, metadata: ArgumentMetadata) {
+        // value 参数是当前处理的方法参数(在被路由处理程序方法接受之前)
+        // metadata是当前处理的方法参数的元数据。
         const { metatype, type } = metadata;
         // 获取要验证的dto类
         const dto = metatype as any;
