@@ -79,7 +79,7 @@ export class CategoryRepository extends TreeRepository<CategoryEntity> {
             item.depth = depth;
             item.parent = parent;
             const { children } = item;
-            unset(item, 'children');
+            unset(item, 'children'); // 移除object对象 path路径上的属性。注意 这个方法会改变源对象object.
             data.push(item);
             data.push(...(await this.toFlatTrees(children, depth + 1, item)));
         }

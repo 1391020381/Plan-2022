@@ -43,7 +43,7 @@ export class CommentEntity extends BaseEntity {
         // 文章不能为空
         nullable: false,
         // 跟随父表删除与更新
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE', // 比如我们在删除文章时,可以把评论一侧的OnDelete给设置为 CASCADE,这样的话在删除文章时回自动删除它下面关联的所有评论,也可以设置 SET NULL （除非评论也可以不属于一篇文章 也就是评论模型关联的文章字段可以是null）
         onUpdate: 'CASCADE',
     })
     post: PostEntity;

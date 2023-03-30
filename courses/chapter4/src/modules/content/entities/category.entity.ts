@@ -14,6 +14,9 @@ import { PostEntity } from './post.entity';
 
 /**
  * 树形嵌套分类
+ * 
+ * 
+ typeorm 定义了 CategoryEntity 其实就是定义了  分类的数据结构。 curd的时候，还是要判断 parentid
  */
 @Exclude()
 @Tree('materialized-path')

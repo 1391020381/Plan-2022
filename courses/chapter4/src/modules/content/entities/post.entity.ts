@@ -86,7 +86,7 @@ export class PostEntity extends BaseEntity {
         // 在新增文章时,如果所属分类不存在则直接创建
         cascade: true,
     })
-    @JoinTable()
+    @JoinTable() // 多对多关联时,关联的一侧 必须加上 @JoinTable()
     categories: CategoryEntity[];
 
     @OneToMany((type) => CommentEntity, (comment) => comment.post, {
