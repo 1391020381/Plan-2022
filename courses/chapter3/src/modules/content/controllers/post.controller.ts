@@ -20,6 +20,7 @@ import { CreatePostDto, QueryPostDto } from '../dtos';
 import { UpdatePostDto } from '../dtos/post.dto';
 import { PostService } from '../services';
 
+// 有了DTO之后不代表就可以自动对请求数据进行验证了,我们需要把DTO作为类型提示添加到API端点(控制器的方法)的参数上,然后再在 Query Body 等装饰器上加上 ValidationPipe管道才能对请求数据进行验证。
 @UseInterceptors(AppIntercepter)
 @Controller('posts')
 export class PostController {

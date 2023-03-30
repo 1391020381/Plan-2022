@@ -1,7 +1,9 @@
 import { ClassSerializerInterceptor, PlainLiteralObject, StreamableFile } from '@nestjs/common';
 import { ClassTransformOptions } from '@nestjs/common/interfaces/external/class-transform-options.interface';
 import { isArray, isNil, isObject } from 'lodash';
-
+/**
+ *https://docs.nestjs.cn/7/techniques?id=%e5%ba%8f%e5%88%97%e5%8c%96%ef%bc%88serialization%ef%bc%89
+ */
 /**
  * 全局拦截器,用于序列化数据
  */

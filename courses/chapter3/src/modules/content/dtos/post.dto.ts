@@ -22,6 +22,9 @@ import { PaginateOptions } from '@/modules/database/types';
 
 import { PostOrderType } from '../constants';
 
+//  class-validator 用于类的验证,本节主要结合DTO对请求数据进行验证。
+// class-transformer 序列化响应式数据,本节用于结合class-validator进行序列化。
+
 /**
  * 文章分页查询验证
  */
@@ -105,6 +108,7 @@ export class CreatePostDto {
 /**
  * 文章更新验证
  */
+// UpdatePostDto 只要去继承 CreatePostDto 就能继承其所有属性。
 export class UpdatePostDto extends PartialType(CreatePostDto) {
     @IsUUID(undefined, { groups: ['update'], message: '文章ID格式错误' })
     @IsDefined({ groups: ['update'], message: '文章ID必须指定' })
