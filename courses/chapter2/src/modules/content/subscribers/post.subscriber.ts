@@ -4,7 +4,8 @@ import { PostBodyType } from '../constants';
 import { PostEntity } from '../entities';
 import { PostRepository } from '../repositories/post.repository';
 import { SanitizeService } from '../services';
-
+// 订阅者的作用在于可以在CRUD数据时创建一个钩子方法执行额外的操作。
+// 使用TypeORM订阅者, 你可以监听特定的实体事件。
 /**
  * 文章模型观察者
  */
@@ -28,7 +29,7 @@ export class PostSubscriber {
      * @param entity
      */
     async afterLoad(entity: PostEntity) {
-        console.log('sdsd');
+        console.log('subscribers:');
         if (entity.type === PostBodyType.HTML) {
             entity.body = this.sanitizeService.sanitize(entity.body);
         }

@@ -1,5 +1,5 @@
 import { isNil } from 'lodash';
-
+// _.isNill 检查value 是否是 null 或者 undefined
 /**
  * 用于请求验证中的boolean数据转义
  * @param value

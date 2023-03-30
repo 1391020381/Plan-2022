@@ -4,6 +4,8 @@ import { DataSource, ObjectType } from 'typeorm';
 
 import { CUSTOM_REPOSITORY_METADATA } from './constants';
 
+// Nest 模块系统包括一个称为动态模块的强大功能。此功能使您可以轻松创建可自定义的模块,这些模块可以动态注册和配置提供程序。
+// https://docs.nestjs.cn/7/modules?id=%e5%8a%a8%e6%80%81%e6%a8%a1%e5%9d%97
 @Module({})
 export class DatabaseModule {
     static forRoot(configRegister: () => TypeOrmModuleOptions): DynamicModule {
