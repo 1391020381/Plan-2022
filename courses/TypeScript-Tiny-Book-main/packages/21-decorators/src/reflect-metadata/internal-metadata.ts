@@ -1,20 +1,20 @@
-import 'reflect-metadata';
+import "reflect-metadata";
 
 function DefineType(type: Object) {
-  return Reflect.metadata('design:type', type);
+  return Reflect.metadata("design:type", type);
 }
 function DefineParamTypes(...types: Object[]) {
-  return Reflect.metadata('design:paramtypes', types);
+  return Reflect.metadata("design:paramtypes", types);
 }
 function DefineReturnType(type: Object) {
-  return Reflect.metadata('design:returntype', type);
+  return Reflect.metadata("design:returntype", type);
 }
 
 @DefineParamTypes(String, Number)
 class Foo {
   @DefineType(String)
   get name() {
-    return 'linbudu';
+    return "linbudu";
   }
 
   @DefineType(Function)
@@ -27,11 +27,14 @@ class Foo {
 
 const foo = new Foo();
 // [ [Function: Number], [Function: Number] ]
-const paramTypes = Reflect.getMetadata('design:paramtypes', foo, 'add');
+const paramTypes = Reflect.getMetadata("design:paramtypes", foo, "add");
+console.log("internal-metadata:", paramTypes);
 // [Function: Number]
-const returnTypes = Reflect.getMetadata('design:returntype', foo, 'add');
+const returnTypes = Reflect.getMetadata("design:returntype", foo, "add");
+console.log("internal-metadata:", returnTypes);
 // [Function: String]
-const type = Reflect.getMetadata('design:type', foo, 'name');
+const type = Reflect.getMetadata("design:type", foo, "name");
+console.log("internal-metadata:", type);
 
 class Bar {
   @DefineType(Foo)
@@ -40,4 +43,4 @@ class Bar {
 
 const bar = new Bar();
 // [class Foo]
-const type2 = Reflect.getMetadata('design:type', bar, 'prop');
+const type2 = Reflect.getMetadata("design:type", bar, "prop");
