@@ -1,3 +1,7 @@
+# reflect-matadata
+
+- [reflect-metadata 的研究](https://juejin.cn/post/6844904152812748807)
+
 # 元信息反射 API
 
 - 元信息反射 API(例如 Reflect)能够用来以标准方式组织元信息。而装饰器中的元信息反射使用非常简单,外观上仅仅可以看做在类的某个方法上附加一些随时可以获取的信息而已。
