@@ -1,0 +1,20 @@
+{
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "javascript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.suggest.jsdoc.generateReturns": false,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "eslint.packageManager": "pnpm",
+    "stylelint.packageManager": "pnpm",
+    "npm.packageManager": "pnpm",
+    "thunder-client.saveToWorkspace": true,
+    "thunder-client.showActivityFromCollection": false,
+    "thunder-client.workspaceRelativePath": "./",
+    "fileheader.customMade": {
+        "🐱 Github": "https://github.com/nestjs/nestjs",
+        "Description": "3R教室(https://pincman.com/classroom)提供TS全栈开发在线培训及远程工作求职指导"
+    }
+}

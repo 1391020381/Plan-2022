@@ -1,0 +1,54 @@
+{
+  "folders": [
+    {
+      "path": "chapter1"
+    },
+    {
+      "path": "chapter2"
+    },
+    {
+      "path": "chapter3"
+    },
+    {
+      "path": "chapter4"
+    },
+    {
+      "path": "chapter5"
+    },
+    {
+      "path": "chapter6"
+    },
+    {
+      "path": "chapter7"
+    },
+    {
+      "path": "chapter8"
+    },
+    {
+      "path": "chapter9"
+    },
+    {
+      "path": "chapter10"
+    },
+    {
+      "path": "chapter11"
+    },
+    {
+      "path": "chapter12"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "eslint.workingDirectories": ["./*/"],
+    "javascript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.suggest.jsdoc.generateReturns": false,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "eslint.packageManager": "pnpm",
+    "stylelint.packageManager": "pnpm",
+    "npm.packageManager": "pnpm"
+  }
+}
