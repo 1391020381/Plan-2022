@@ -4,6 +4,12 @@ import { isObject, omit } from 'lodash';
 
 import { DTO_VALIDATION_OPTIONS } from '../constants';
 
+// export interface ArgumentMetadata {
+//     type: 'body' | 'query' | 'param' | 'custom';
+//     metatype?: Type<unknown>;
+//     data?: string;
+//   }
+
 /**
  * 全局管道,用于处理DTO验证
  */
