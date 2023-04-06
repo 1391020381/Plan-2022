@@ -236,6 +236,7 @@ export class Configure {
 
     /**
      * 启用动态配置
+     * 用于合并动态配置 ymlConfig 到 config 属性中
      */
     protected enabledStorage() {
         this.storage = true;
